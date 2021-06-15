@@ -24,24 +24,25 @@ const Card = ({ clinic }) => {
     ))
     
     //Merge days with similar schedule
-    let merged = schedule.reduce((prev, curr) => {
-        let last = prev[prev.length - 1]
-        if(last && last.time == curr.time) {
-            last.endDay = curr.day
+    let mergedDays = schedule.reduce((previous, current) => {
+        let last = previous[previous.length - 1]
+        if(last && last.time == current.time) {
+            last.endDay = current.day
         } else {
-            prev.push(curr)
+            previous.push(current)
         }
-        return prev
+        return previous
     }, [])
+    console.log('MERGED1: ', mergedDays)
 
-    //Reformat mergedDays to make them easier to style
-    let mergedDays = merged.map(v => { 
+    //Separate days and time to make it easier to format
+    mergedDays = mergedDays.map(item => { 
         return {
-           days: [v.day, v.endDay && ' - ' + v.endDay],
-           time: [v.time],
+            days: [item.day, item.endDay && ' - ' + item.endDay],
+            time: [item.time],
         };
-     });
-
+    });
+    
     return (
         <div className={styles.container}>
             <h2 className={styles.title}>{name}</h2>
