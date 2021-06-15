@@ -15,13 +15,24 @@ const Card = ({ clinic }) => {
     const { name, openingHours } = clinic
     const daysShortName= ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
     const daysFullName= ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satureday', 'Sunday']
-    const schedule = daysShortName.map((day, i) => (
-        {
-            day: daysFullName[i],
-            time: openingHours[day].isOpen ? `${formatTime(openingHours[day].periods[0].from)} - ${formatTime(openingHours[day].periods[0].to)}` : 'Closed'
-        }
-        
-    ))
+    
+    //Genearate schedule
+    let timeFrom, timeTo, timeString
+    const schedule = daysShortName.map((day, i) => {
+        //Format the time and create a time string
+        timeFrom = formatTime(openingHours[day].periods[0].from)
+        timeTo = formatTime(openingHours[day].periods[0].to)
+        if (openingHours[day].isOpen) {
+            timeString = timeFrom == timeTo ? 'All day' : `${timeFrom} - ${timeTo}`
+        } else ( timeString = 'Closed')
+
+        return (
+            {
+                day: daysFullName[i],
+                time: timeString
+            }        
+        )
+    })
     
     //Merge days with similar schedule
     let mergedDays = schedule.reduce((previous, current) => {
@@ -33,7 +44,6 @@ const Card = ({ clinic }) => {
         }
         return previous
     }, [])
-    console.log('MERGED1: ', mergedDays)
 
     //Separate days and time to make it easier to format
     mergedDays = mergedDays.map(item => { 
