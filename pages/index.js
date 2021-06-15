@@ -9,7 +9,7 @@ export default function Home({ data }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Dr.Dropin</title>
+        <title>Dr.Dropin Code Test - Zubair Rauf</title>
         <meta name="description" content="Code test from Dr.Dropin" />
         <link rel="icon" href="/favicon.png" />
       </Head>
