@@ -11,7 +11,7 @@ export default function Home({ data }) {
       <Head>
         <title>Dr.Dropin</title>
         <meta name="description" content="Code test from Dr.Dropin" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <main className={styles.main}>
