@@ -56,9 +56,9 @@ const Card = ({ clinic }) => {
     return (
         <div className={styles.container}>
             <h2 className={styles.title}>{name}</h2>
-            {mergedDays.map(day => {
+            {mergedDays.map((day, i) => {
                 return(
-                    <div className={styles.schedule}>
+                    <div className={styles.schedule} key={i}>
                         <p className={styles.schedule_days}>{day.days}</p>
                         <p className={styles.schedule_time}>{day.time}</p> 
                     </div>

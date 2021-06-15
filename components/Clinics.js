@@ -7,8 +7,8 @@ const Clinics = ({ data }) => {
             <h1 className={styles.title}>
                 Våre klinikker
             </h1>
-            { data.map(clinic => (
-                <Card clinic={clinic}/>
+            { data.map((clinic, i) => (
+                <Card key={i} clinic={clinic}/>
             ))}
         </div>
     )

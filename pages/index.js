@@ -4,7 +4,6 @@ import styles from '../styles/Home.module.scss'
 import Clinics from '../components/Clinics'
 
 export default function Home({ data }) {
-  console.log('DATA; ', data)
 
   return (
     <div className={styles.container}>
@@ -25,7 +24,6 @@ export default function Home({ data }) {
 export async function getStaticProps () {
   const res = await fetch('https://staging-core.api.drdropin.no/v1/clinics');
   const data = await res.json();
-  console.log('STATIS: ', data)
   return {
     props: {
       data
