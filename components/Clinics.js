@@ -1,4 +1,5 @@
 import styles from './clinics.module.scss'
+import Card from './Card'
 
 const Clinics = () => {
     return (
@@ -6,6 +7,7 @@ const Clinics = () => {
             <h1 className={styles.title}>
                 Våre klinikker
             </h1>
+            <Card />
         </div>
     )
 }
